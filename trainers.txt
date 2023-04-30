@@ -1,0 +1,17 @@
+1#Fiona Gill#1911 Joseph Court#fmgill1@crimson.ua.edu#False
+2#Mittens Gill#1911 Joseph Court#mittens@gmail.com#False
+3#Sorca Gill#200 Dublin St#sorca@gmail.com#False
+4#Robert Gill#123 Easy St#robert.gill@crinj.com#False
+5#Lily Schulman#2200 North Central Road#lily.yankees@gmail.com#False
+6#Kevin Schulman#2305 South Central St#kevinthebear@gmail.com#False
+7#Jess Maddox#123 Northport Rd#jlmaddox@crimson.ua.edu#False
+8#Fran Laws#845 Magnolia Drive#flaws@gmail.com#False
+9#Carson Lott#234 University Blvd#clott@crimson.ua.edu#False
+10#Maddy Setser#1008 Oak Ave#mmsetser@crimson.ua.edu#False
+11#Caitlin Johnson#123 Hewson Hall#caitlin@gmail#False
+12#Jeff Lucas#123 North Lawn Hall#jeff@ua.edu#False
+13#Willa Roby#45 Huntsville Road#willaruns@gmail.com#False
+14#Brooke Crider#21 Brooke Street#brooke123crider@gmail#False
+15#Amelia Stevens#123 Walk Way#ameliastevens@gmail#False
+16#Ellie Grace Dockery#123 Tuscaloosa Way#ellie@gmail.com#False
+17#Gray McLaney#123 Riverfront Drive#gray@gmail.com#True

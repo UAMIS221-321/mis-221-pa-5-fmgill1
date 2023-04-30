@@ -1,0 +1,15 @@
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.csproj.AssemblyReference.cache
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.AssemblyInfoInputs.cache
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.AssemblyInfo.cs
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.csproj.CoreCompileInputs.cache
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\bin\Debug\net6.0\mis-221-pa-5-fmgill1.exe
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\bin\Debug\net6.0\mis-221-pa-5-fmgill1.deps.json
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\bin\Debug\net6.0\mis-221-pa-5-fmgill1.runtimeconfig.json
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\bin\Debug\net6.0\mis-221-pa-5-fmgill1.dll
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\bin\Debug\net6.0\mis-221-pa-5-fmgill1.pdb
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.dll
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\refint\mis-221-pa-5-fmgill1.dll
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.pdb
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\mis-221-pa-5-fmgill1.genruntimeconfig.cache
+C:\Users\gillf\labs\mis-221-pa-5-fmgill1\obj\Debug\net6.0\ref\mis-221-pa-5-fmgill1.dll
