@@ -113,9 +113,4 @@ namespace mis_221_pa_5_fmgill1
     }
 }
 
-
-//for test logs test all the breaks for an extra!
-//have an IPO for any method that has logic in addition to the UMLs
-//for reports the revenue one : baseline is to count all the past sessions but an extra would be to count the ones that were only completed
-
     

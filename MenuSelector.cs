@@ -10,6 +10,8 @@ namespace mis_221_pa_5_fmgill1
         private string[] Options;
         private string Prompt;
         
+        //extra from video on how to do this type of menu
+        //prevents user from entering incorrect input on the main menu, looks pretty too
         public MenuSelector(string prompt, string[] options)
         {
             Prompt = prompt;

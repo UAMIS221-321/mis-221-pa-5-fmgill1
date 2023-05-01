@@ -15,3 +15,5 @@
 15#Amelia Stevens#123 Walk Way#ameliastevens@gmail#False
 16#Ellie Grace Dockery#123 Tuscaloosa Way#ellie@gmail.com#False
 17#Gray McLaney#123 Riverfront Drive#gray@gmail.com#True
+18#Emily Guzman#123 Florida Way#emily@gmail.com#False
+19#Dove Cameron#123 Disney Channel#dove@gmail.com#True

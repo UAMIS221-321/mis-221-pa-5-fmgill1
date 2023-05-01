@@ -159,7 +159,7 @@ static void RunReportsMenu(TrainerUtility utility, ListingUtility utility1, Book
                 report.HistoricalCustomerReport();
                 break;
             case 2: 
-                report.HistoricalRevenue();
+                report.HistoricalRevenueReport();
                 break;
         }
         selectedIndex = mainMenu.Run();
