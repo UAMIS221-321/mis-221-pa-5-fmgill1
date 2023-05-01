@@ -6,6 +6,7 @@ namespace mis_221_pa_5_fmgill1
         private Booking[] bookings;
         private ListingUtility listingUtility;
         private Listings[] listings;
+     
 
         public Report()
         {
@@ -53,6 +54,59 @@ namespace mis_221_pa_5_fmgill1
             }
             listingUtility.Pause();
 
+        }
+
+        public void IndividualTrainerReport()
+        {
+            
+            System.Console.WriteLine("Please enter the trainer name:"); 
+            string name = Console.ReadLine();
+            int completed = 0;
+            int cancelled = 0;
+            int booked = 0;
+            for (int i = 0; i < Booking.GetCount(); i++)
+            {
+                if(bookings[i].GetTrainerName() == name) //if trainer name is found
+                {
+                    if(bookings[i].GetSessionStatus() == "completed" ) //if name is found and session is completed
+                    {
+                        System.Console.WriteLine(bookings[i].ToString()); //print all bookings completed
+                        completed ++; //inc completed #
+                    }
+                    else if(bookings[i].GetSessionStatus()== "booked")// if the name is found and session is booked
+                    {
+                        System.Console.WriteLine(bookings[i].ToString());//print all bookings booked
+                        booked++; //inc booked #
+                    }
+                    else if(bookings[i].GetSessionStatus() == "cancelled")//if the name is found and the session was cancelled
+                    {
+                        System.Console.WriteLine(bookings[i].ToString()); //print cancelled sessions
+                        cancelled++; //inc cancelled #
+                    }
+                }
+                
+            }
+            System.Console.WriteLine($"This trainer has {completed} completed sessions, {booked} booked sessions, and {cancelled} cancelled sessions"); //counts for booked, completed and cancelled  
+            System.Console.WriteLine();
+            System.Console.WriteLine("Would you like to save this report? (Yes or No)");
+            string userInput = Console.ReadLine().ToUpper();
+            string fileName = "";
+            if(userInput == "YES")
+            {
+                System.Console.WriteLine("What would you like to name the file");
+                fileName = Console.ReadLine(); 
+                StreamWriter outFile = new StreamWriter(fileName); //creates streamwriter object
+                for (int i = 0; i < Booking.GetCount(); i++)
+                {
+                    if(bookings[i].GetTrainerName() == name && (bookings[i].GetSessionStatus() == "completed" || bookings[i].GetSessionStatus() == "booked" || bookings[i].GetSessionStatus() == "cancelled")) //if name is found and session is completed/booked
+                    {
+                        outFile.WriteLine(bookings[i].ToFile()); //write those bookings to the file
+                    }
+                }
+                outFile.Close(); //close file
+                System.Console.WriteLine($"Your report was saved to a file called {fileName}.txt");
+            }
+            listingUtility.Pause();
         }
         public void SortByName()
         {
@@ -158,43 +212,39 @@ namespace mis_221_pa_5_fmgill1
                 }
             }
         }
-        public void HistoricalRevenueReport() //i promise i tried really hard :( i tried this 100 different ways and asked for lots of help but still couldnt get it
+        public void HistoricalRevenueReport() 
         {
-            //regardless, here is my attempt. the work makes sense to me but doesnt implement correctly
             SortByDate();   //sort the bookings by date
-            
             int currentMonth = bookings[0].GetTrainingDate().Month; //creates an int for the month # based on the first training date in bookings 
             int currentYear = bookings[0].GetTrainingDate().Year; //creates an int for the first year # based on the training date in bookings
-            double monthRev = listings[FindListingByDate(bookings[0].GetTrainingDate())].GetSessionCost(); //sets the month revenue to the first session cost based on the booking and listing date 
-            double yearRev = listings[FindListingByDate(bookings[0].GetTrainingDate())].GetSessionCost(); //same thing, planned to only do += for every session under the same year 
-           
+            double monthRev = 0;
+            double yearRev = 0;
             System.Console.WriteLine("Welcome to the Historical Revenue Report! These numbers are based on sessions that have been COMPLETED");
+            System.Console.WriteLine("Here are the revenues for the months in which training sessions exist:");
             listingUtility.Pause();
-            for(int i = 0; i < Booking.GetCount(); i++)
-            {
-                if(bookings[i].GetSessionStatus() == "completed") //only gets revenue for sessions that were actually completed
-                {
-                    if(bookings[i].GetTrainingDate().Year == listings[FindListingByDate(bookings[i].GetTrainingDate())].GetYear()) //checks if the year in the booking is the same as the year in the listing
+
+            for (int i = 0; i < Booking.GetCount(); i++){ // iterating through all bookings
+                if(bookings[i].GetSessionStatus() == "completed")
+                { // only using completed sessions
+                    if(bookings[i].GetTrainingDate().Year == currentYear)
                     {
-                        yearRev += listings[FindListingByDate(bookings[i].GetTrainingDate())].GetSessionCost(); //add session cost for that listing (in the same year) to yearRev
-                        if(bookings[i].GetTrainingDate().Month == listings[FindListingByDate(bookings[i].GetTrainingDate())].GetMonth()) //checks if the month in the booking is the same as the month in thw listing
-                        {
-                            monthRev += listings[i].GetSessionCost(); //add listings session cost to the monthly rev 
+                        if(bookings[i].GetTrainingDate().Month == currentMonth)
+                        { //checks if the month in the booking is the same as the month in thw listing
+                            monthRev += listings[FindListingByDate(bookings[i].GetTrainingDate())].GetSessionCost(); //add session cost for that listing (in the same year) to yearRev
                         }
                         else
                         {
-                            ProcessMonthBreak(ref currentMonth, ref monthRev, i); //process break if the month is no longer the same
+                            ProcessMonthBreak(ref currentMonth, ref monthRev, i, ref currentYear);
                         }
+                        yearRev += listings[FindListingByDate(bookings[i].GetTrainingDate())].GetSessionCost(); //add session cost for that listing (in the same year) to yearRev
                     }
                     else
                     {
-                        //process the break if the year is no longer the same
+                        ProcessMonthBreak(ref currentMonth, ref monthRev, i, ref currentYear);
                         ProcessYearBreak(ref currentYear, ref yearRev, i);
                     }
                 }
             }
-            //process the extra breaks to avoid fence post error
-            ProcessMonthBreak(ref currentMonth, ref monthRev, 0);
             ProcessYearBreak(ref currentYear, ref yearRev, 0);
 
             System.Console.WriteLine("Would you like to save the report?");
@@ -213,16 +263,15 @@ namespace mis_221_pa_5_fmgill1
             }
             listingUtility.Pause();
         }
-
-        public void ProcessMonthBreak(ref int currentMonth, ref double monthRev, int i)
+        public void ProcessMonthBreak(ref int currentMonth, ref double monthRev, int i, ref int currentYear)
         {
-            System.Console.WriteLine($"{currentMonth}  Revenue:  {monthRev}"); //print current month and total revenue for the month
+            System.Console.WriteLine($"{currentMonth}/{currentYear}  Revenue:  {monthRev}"); //print current month/year and total revenue for the month
             currentMonth = bookings[i].GetTrainingDate().Month; //reset current month
             monthRev = listings[FindListingByDate(bookings[i].GetTrainingDate())].GetSessionCost(); //reset monthly rev
         }
         public void ProcessYearBreak(ref int currentYear, ref double yearRev, int i)
         {
-            System.Console.WriteLine($"{currentYear}  Revenue:  {yearRev}"); //print current year and the total revenue for the year
+            System.Console.WriteLine($"{currentYear}    Revenue:  {yearRev}"); //print current year and the total revenue for the year
             currentYear = bookings[i].GetTrainingDate().Year; //reset current year
             yearRev = listings[FindListingByDate(bookings[i].GetTrainingDate())].GetSessionCost(); //reset the yearly rev
         }

@@ -145,20 +145,23 @@ static void RunReportsMenu(TrainerUtility utility, ListingUtility utility1, Book
 (  _ \/ )( \(  ( \  (  _ \(  __)(  _ \ /  \(  _ \(_  _)/ ___)
  )   /) \/ (/    /   )   / ) _)  ) __/(  O ))   /  )(  \___ \
 (__\_)\____/\_)__)  (__\_)(____)(__)   \__/(__\_) (__) (____/";
-    string[] options = {"Individual Customer Sessions", "Historical Customer Sessions", "Historical Revenue Report", "Return to Main Menu"};
+    string[] options = {"Individual Customer Sessions", "Individual Trainer Report", "Historical Customer Sessions", "Historical Revenue Report", "Return to Main Menu"};
     MenuSelector mainMenu = new MenuSelector(prompt, options);
     int selectedIndex = mainMenu.Run();
-    while(selectedIndex != 3)
+    while(selectedIndex != 4)
     {
         switch(selectedIndex)
         {
             case 0:
                 report.IndividualCustomerReport();
                 break;
-            case 1:
+            case 1: 
+                report.IndividualTrainerReport();
+                break;
+            case 2:
                 report.HistoricalCustomerReport();
                 break;
-            case 2: 
+            case 3: 
                 report.HistoricalRevenueReport();
                 break;
         }
